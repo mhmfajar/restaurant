@@ -4,6 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
+import Fade from "@mui/material/Fade";
 import SidebarAdmin from "../components/Sidebar/SidebarAdmin";
 import { useEffect, useState } from "react";
 import BasicTableOrder from "../components/Table/BasicTableOrder";
@@ -61,10 +62,15 @@ function OrderContent() {
                     }}
                 >
                     <Toolbar />
-                    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                        {/* Orders */}
-                        <BasicTableOrder data={orders} />
-                    </Container>
+                    <Fade
+                        in={true}
+                        timeout={{ appear: 5000, enter: 3000, exit: 2000 }}
+                    >
+                        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                            {/* Orders */}
+                            <BasicTableOrder data={orders} />
+                        </Container>
+                    </Fade>
                 </Box>
             </Box>
         </ThemeProvider>

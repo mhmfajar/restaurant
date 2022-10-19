@@ -10,6 +10,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
 import { Tables } from "../services/data-types/index";
+import Slide from "@mui/material/Slide";
 
 const mdTheme = createTheme({
     palette: {
@@ -66,13 +67,25 @@ function LandingPageContent() {
                         {/* Tables */}
                         <Grid container spacing={2}>
                             {tables.map((key: Tables) => (
-                                <Grid key={key.id} item xs={3}>
-                                    <Card
-                                        title={key.name}
-                                        guest_number={key.guest_number}
-                                        status={key.status}
-                                    />
-                                </Grid>
+                                <Slide
+                                    direction="up"
+                                    in={true}
+                                    timeout={{
+                                        appear: 3000,
+                                        enter: 2000,
+                                        exit: 1000,
+                                    }}
+                                    mountOnEnter
+                                    unmountOnExit
+                                >
+                                    <Grid key={key.id} item xs={3}>
+                                        <Card
+                                            title={key.name}
+                                            guest_number={key.guest_number}
+                                            status={key.status}
+                                        />
+                                    </Grid>
+                                </Slide>
                             ))}
                         </Grid>
                     </Container>

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import BasicTable from "../components/Table/BasicTable";
 import { Foods } from "../services/data-types/index";
 import Button from "@mui/material/Button";
+import Fade from "@mui/material/Fade";
 import { useNavigate } from "react-router-dom";
 import { fetchFood, setFoodDelete } from "../services/food";
 
@@ -74,19 +75,27 @@ function FoodContent() {
                     }}
                 >
                     <Toolbar />
-                    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                        {/* Foods */}
-                        <Button
-                            onClick={() => navigate("create")}
-                            size="small"
-                            variant="contained"
-                            color="primary"
-                            sx={{ mb: 2 }}
-                        >
-                            Create Food
-                        </Button>
-                        <BasicTable data={foods} handleDelete={handleDelete} />
-                    </Container>
+                    <Fade
+                        in={true}
+                        timeout={{ appear: 5000, enter: 3000, exit: 2000 }}
+                    >
+                        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                            {/* Foods */}
+                            <Button
+                                onClick={() => navigate("create")}
+                                size="small"
+                                variant="contained"
+                                color="primary"
+                                sx={{ mb: 2 }}
+                            >
+                                Create Food
+                            </Button>
+                            <BasicTable
+                                data={foods}
+                                handleDelete={handleDelete}
+                            />
+                        </Container>
+                    </Fade>
                 </Box>
             </Box>
         </ThemeProvider>

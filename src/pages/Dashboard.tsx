@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
+import Slide from "@mui/material/Slide";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import SidebarAdmin from "../components/Sidebar/SidebarAdmin";
@@ -72,14 +73,26 @@ function DashboardContent() {
                         {/* Tables */}
                         <Grid container spacing={2}>
                             {tables.map((key: Tables, i: number) => (
-                                <Grid key={i} item xs={3}>
-                                    <DashCard
-                                        id={key.id}
-                                        title={key.name}
-                                        guest_number={key.guest_number}
-                                        status={key.status}
-                                    />
-                                </Grid>
+                                <Slide
+                                    direction="up"
+                                    in={true}
+                                    timeout={{
+                                        appear: 3000,
+                                        enter: 2000,
+                                        exit: 1000,
+                                    }}
+                                    mountOnEnter
+                                    unmountOnExit
+                                >
+                                    <Grid key={i} item xs={3}>
+                                        <DashCard
+                                            id={key.id}
+                                            title={key.name}
+                                            guest_number={key.guest_number}
+                                            status={key.status}
+                                        />
+                                    </Grid>
+                                </Slide>
                             ))}
                         </Grid>
                     </Container>

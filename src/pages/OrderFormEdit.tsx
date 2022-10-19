@@ -113,7 +113,6 @@ function OrderFormEditContent() {
                                         p: 2,
                                         display: "flex",
                                         flexDirection: "column",
-                                        height: 240,
                                     }}
                                 >
                                     <TableContainer>
