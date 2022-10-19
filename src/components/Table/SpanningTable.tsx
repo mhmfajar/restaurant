@@ -25,16 +25,22 @@ export default function SpanningTable({ orderNumber, details, total }: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {details.map((row: any, i: number) => (
-                        <TableRow key={i}>
-                            <TableCell>{i + 1}</TableCell>
-                            <TableCell align="right">{row.menu}</TableCell>
-                            <TableCell align="right">{row.jumlah}</TableCell>
-                            <TableCell align="right">
-                                {row.total_price}
-                            </TableCell>
-                        </TableRow>
-                    ))}
+                    {details
+                        ? details.map((row: any, i: number) => (
+                              <TableRow key={i}>
+                                  <TableCell>{i + 1}</TableCell>
+                                  <TableCell align="right">
+                                      {row.menu}
+                                  </TableCell>
+                                  <TableCell align="right">
+                                      {row.jumlah}
+                                  </TableCell>
+                                  <TableCell align="right">
+                                      {row.total_price}
+                                  </TableCell>
+                              </TableRow>
+                          ))
+                        : " "}
                     <TableRow>
                         <TableCell align="center" colSpan={3}>
                             Total

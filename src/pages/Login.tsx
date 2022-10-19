@@ -8,7 +8,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { setLogin } from "../services/auth";
+import { getUser, setLogin } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
@@ -52,6 +52,8 @@ export default function Login() {
         } else {
             const { token } = response.data;
             localStorage.setItem("token", token);
+            const user = await getUser();
+            localStorage.setItem("name", user.data.name);
             navigate("/dashboard");
         }
     };

@@ -55,3 +55,13 @@ export async function fetchFood() {
     token: true
   });
 }
+
+export async function getOrderFood() {
+  const url = `${ROOT_API}/${API_VERSION}/food-order`;
+
+  return callAPI({
+    url,
+    method: 'GET',
+    token: true
+  });
+}

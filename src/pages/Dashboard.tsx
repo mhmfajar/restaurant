@@ -72,7 +72,7 @@ function DashboardContent() {
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                         {/* Tables */}
                         <Grid container spacing={2}>
-                            {tables.map((key: Tables, i: number) => (
+                            {tables.map((key: Tables) => (
                                 <Slide
                                     direction="up"
                                     in={true}
@@ -84,7 +84,7 @@ function DashboardContent() {
                                     mountOnEnter
                                     unmountOnExit
                                 >
-                                    <Grid key={i} item xs={3}>
+                                    <Grid item xs={3}>
                                         <DashCard
                                             id={key.id}
                                             title={key.name}

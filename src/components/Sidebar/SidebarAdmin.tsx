@@ -16,7 +16,9 @@ import ListItemText from "@mui/material/ListItemText";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import TaskIcon from "@mui/icons-material/Task";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
-import LogoutIcon from "@mui/icons-material/Logout";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { setLogout } from "../../services/auth";
 
@@ -99,13 +101,23 @@ function MainListItems() {
 
 export default function SidebarAdmin(props: any) {
     const [open, setOpen] = React.useState(true);
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const navigate = useNavigate();
+
+    const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     const toggleDrawer = () => {
         setOpen(!open);
     };
 
     const handlerLogout = async () => {
+        setAnchorEl(null);
         await setLogout();
         localStorage.removeItem("token");
         navigate("/");
@@ -141,13 +153,31 @@ export default function SidebarAdmin(props: any) {
                         {props.title}
                     </Typography>
                     <Button
-                        color="secondary"
-                        variant="contained"
-                        endIcon={<LogoutIcon />}
-                        onClick={() => handlerLogout()}
+                        color="inherit"
+                        startIcon={<AccountCircle />}
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleMenu}
                     >
-                        Logout
+                        {localStorage.getItem("name")}
                     </Button>
+                    <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                            vertical: "top",
+                            horizontal: "right",
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                            vertical: "top",
+                            horizontal: "right",
+                        }}
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                    >
+                        <MenuItem onClick={handlerLogout}>Logout</MenuItem>
+                    </Menu>
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>

@@ -10,6 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
+import { currencyFormat } from "../../helpers/helpers";
 
 export default function BasicTable(props: any) {
     const navigate = useNavigate();
@@ -53,7 +54,9 @@ export default function BasicTable(props: any) {
                             <TableCell align="center">
                                 {row.status === true ? "Ready" : "Not Ready"}
                             </TableCell>
-                            <TableCell align="center">{row.price}</TableCell>
+                            <TableCell align="center">
+                                {currencyFormat(row.price)}
+                            </TableCell>
                             <TableCell align="center">
                                 <Button
                                     size="small"

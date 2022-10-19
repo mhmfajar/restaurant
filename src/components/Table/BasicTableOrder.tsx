@@ -53,10 +53,10 @@ export default function BasicTable(props: any) {
                             <TableCell align="center">{row.table}</TableCell>
                             <TableCell align="center">{row.status}</TableCell>
                             <TableCell align="center">
-                                {row.total_food}
+                                {row.total_food ? row.total_food : 0}
                             </TableCell>
                             <TableCell align="center">
-                                {row.total_price}
+                                {row.total_price ? row.total_price : 0}
                             </TableCell>
                             <TableCell align="center">
                                 {row.status === "closed" ? (

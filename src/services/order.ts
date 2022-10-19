@@ -36,3 +36,49 @@ export async function setOrderTable(id: any) {
     token: true
   });
 }
+
+export async function setCloseOrder(id: any) {
+  const url = `${ROOT_API}/${API_VERSION}/close-order`;
+  const data = {
+    id
+  }
+
+  return callAPI({
+    url,
+    method: 'PUT',
+    data: data,
+    token: true
+  });
+}
+
+export async function setAddOrderDetails(data: any) {
+  const url = `${ROOT_API}/${API_VERSION}/order/add`;
+
+  return callAPI({
+    url,
+    method: 'PUT',
+    data,
+    token: true
+  });
+}
+
+export async function setUpdateOrderDetails(data: any) {
+  const url = `${ROOT_API}/${API_VERSION}/order/update`;
+
+  return callAPI({
+    url,
+    method: 'PUT',
+    data,
+    token: true
+  });
+}
+
+export async function setDeleteOrderDetails(id: any) {
+  const url = `${ROOT_API}/${API_VERSION}/order/delete/${id}`;
+
+  return callAPI({
+    url,
+    method: 'DELETE',
+    token: true
+  });
+}

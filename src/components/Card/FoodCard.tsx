@@ -5,14 +5,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
+import { currencyFormat } from "../../helpers/helpers";
 
 export default function FoodCard(props: any) {
-    function currencyFormat(num: number) {
-        return (
-            "Rp. " + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
-        );
-    }
-
     return (
         <Card
             sx={{
@@ -42,7 +37,7 @@ export default function FoodCard(props: any) {
                 color="info"
                 variant="contained"
                 sx={{ margin: 1, marginLeft: "auto" }}
-                onClick={() => props.handlerAddFood()}
+                onClick={() => props.handlerAddFood(props.id)}
             >
                 <AddIcon />
             </Button>

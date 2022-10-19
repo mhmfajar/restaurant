@@ -4,8 +4,8 @@ import { LoginTypes } from './data-types';
 const ROOT_API = "http://localhost:8000";
 const API_VERSION = 'api/v1';
 
-export async function getAuth() {
-  const url = `${ROOT_API}/${API_VERSION}/check-login`;
+export async function getUser() {
+  const url = `${ROOT_API}/${API_VERSION}/user-profile`;
 
   return callAPI({
     url,
